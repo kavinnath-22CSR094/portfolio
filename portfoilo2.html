@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #000; /* Set text color */
+        }
+
+        nav {
+             background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed; /* Fix position */
+            top: 0; /* Align to top */
+            width: 100%; /* Full width */
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #f4f4f4;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            text-decoration:none;
+            color:#f7e11e;
+        }
+
+        header {
+            background-color: #222;
+            background-image: url('background.jpg'); /* Adds the background image */
+            background-size: cover; /* Covers the entire header area, without repeating */
+            background-position: center; /* Centers the background image */
+            color: #f4f4f4;
+            text-align: center;
+            padding-top: 130px;
+            padding-bottom: 40px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 48px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+        header p {
+            margin-top: 20px;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        section {
+            background-color: #f4f4f4;
+            padding: 50px 0;
+            text-align: center;
+            color: #333; /* Change text color */
+        }
+
+        section h2 {
+            font-size: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        section h3 {
+            font-size: 20px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        section h4 {
+            font-size: 30px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        section h6 a{
+            font-size: 30px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #222;
+            text-align: center;
+            text-decoration: none;
+        padding-bottom: -10px;}
+        section h5 {
+            font-size: 25px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .project p{
+            font-size: 14px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding-top: 30px;
+            margin-left: 40px;
+            text-align: left;
+        }
+        .content {
+            max-width:1000px;
+            margin: 0 auto;
+        }
+
+        .project {
+            margin-bottom: 30px;
+            position: relative; /* Make the project container relative for absolute positioning */
+            overflow: hidden; /* Hide overflow for absolute positioning */
+        }
+
+        .project img {
+            float: left;
+            width: 400px;
+            height: 300px;
+            margin-right: 20px;
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+
+        .project:hover img {
+            transform: scale(1.05); /* Scale up on hover */
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            
+            width: 410px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: #f9f9f9; /* Smooth transition */
+            
+        }
+
+        .project:hover .project-overlay {
+            opacity: 1; /* Show overlay on hover */
+        }
+
+        .project-title {
+            margin-top: 90px;
+            font-size: 24px;
+            margin-bottom: 70px;
+        }
+
+        .learn-more-btn {
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: white;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .learn-more-btn:hover {
+            background-color: gold; /* Darker shade on hover */
+        }
+        .presentation {
+            margin-bottom: 30px;
+            position: relative; /* Make the project container relative for absolute positioning */
+            overflow: hidden; /* Hide overflow for absolute positioning */
+        }
+
+        .presentation img {
+            width: 300px;
+            height: 200px;
+            transition: transform 0.3s ease; /* Smooth transition */
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 30px;
+        }
+
+        .presentation:hover img {
+            transform: scale(1.05); /* Scale up on hover */
+        }
+   
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .about-wrapper {
+            display: flex;
+            align-items: center; /* Keeps items vertically aligned */
+            justify-content: space-between; /* Distributes space between elements */
+            text-align: left;
+        }
+
+        .bio {
+            flex: 1; /* Takes up remaining space */
+            padding-right: 0px; /* Adds some space between the text and image */
+            font-size: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .profile-pic {
+            float: right; /* Aligns the profile pic to the right */
+            margin-left: 20px; /* Adds space between the text and image */
+        }
+
+        .profile-pic img {
+            width: 200px; /* Limits the size of the image */
+            height: 200px; /* Maintains aspect ratio */
+            border-radius: 50%;
+        }
+
+        .skill {
+            margin-bottom: 20px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .progress {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            position: absolute;
+            animation: progressAnimation 7.5s ease-in-out forwards; /* Add animation */
+        }
+
+        .progress-bar::after {
+            content: attr(data-progress) '%';
+            position: absolute;
+            bottom: -5px;
+            right: 5px;
+            color: #fff;
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        /* Define the animation */
+        @keyframes progressAnimation {
+            from {
+                width: 0;
+            }
+            to {
+                width: calc(var(--progress) * 1%);
+            }
+        }
+
+        .progress-bar.html {
+            background-color: #e34c26; /* HTML5 color */
+        }
+
+        .progress-bar.css {
+            background-color: #2965f1; /* CSS3 color */
+        }
+
+        .progress-bar.bootstrap {
+            background-color: #563d7c; /* Bootstrap color */
+        }
+
+        .progress-bar.js {
+            background-color: #f7e11e; /* JavaScript color */
+        }
+
+        .progress-bar.node {
+            background-color: #68a063; /* Node.js color */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#presentations">PRESENTATIONS</a></li>
+            <li><a href="KAVINNATH RESUME.pdf">DOWNLOAD RESUME</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>KAVINNATH A R</h1>
+        <p>Web Developer</p>
+    </header>
+
+    <section id="about">
+        <h2>ABOUT ME</h2>
+        <div class="content about-wrapper">
+            <div class="bio">
+                <p>"Hello! I'm Kavinnath, a Computer Science sophomore with a passion for technology that extends beyond the classroom. I've won multiple paper presentations and coding competitions, honing my technical skills and ability to communicate complex ideas effectively. Actively participating in coding workshops and hackathons, I've enhanced my problem-solving skills and proficiency in languages like Python, Java, and JavaScript, along with frameworks like Node.js and React. Eager to apply my skills in real-world problem-solving, I seek roles that challenge me and offer opportunities for continued growth in competitive environments. If you're seeking a dynamic, innovative team member with a proven track record in competitive programming and academic research, feel free to reach out!"</p>
+            </div>
+            <div class="profile-pic">
+                <img src="Photo for entrance.jpg" alt="John Doe">
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="skills">
+        <h2>SKILLS</h2>
+        <div class="content">
+            <div class="skill">
+                <h3>HTML5</h3>
+                <div class="progress">
+                    <div class="progress-bar html" style="--progress: 92;" data-progress="92"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>CSS3</h3>
+                <div class="progress">
+                    <div class="progress-bar css" style="--progress: 85;" data-progress="85"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>Bootstrap</h3>
+                <div class="progress">
+                    <div class="progress-bar bootstrap" style="--progress: 77;" data-progress="77"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>JavaScript</h3>
+                <div class="progress">
+                    <div class="progress-bar js" style="--progress: 80;" data-progress="80"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>Node js</h3>
+                <div class="progress">
+                    <div class="progress-bar node" style="--progress: 70;" data-progress="70"></div>
+
+                </div>
+            </div>
+            <!-- Add more skills here -->
+        </div>
+    </section>
+    
+    
+
+    <section id="projects">
+        <h2>PROJECTS</h2>
+        <div class="content">
+            <h5>ELECTRICITY GENERATION FROM UP AND DOWN MOTION</h5>
+            <div class="project">
+                
+                <img src="project 1.jpg" alt="Project 1">
+                <div class="project-overlay">
+                    <h3 class="project-title">ELECTRICITY GENERATION FROM UP AND DOWN MOTION</h3>
+                    <a href="#" class="learn-more-btn">Learn More</a>
+                </div>
+                <p>Electricity generation from up and down motion refers to the generation of electricity by the up and down motion of a see-saw. Nowadays, when we try to produce electricity, it causes some pollution such as noise pollution from hydro, radiation from nuclear, air pollution from thermal, etc. However, this prototype does not cause any pollution; it is completely eco-friendly. It works on the principle of electromagnetic induction and spur gear mechanism. Here, when we apply some force on either side, it generates up and down motion. I have placed a rod at the center of the see-saw which generates rotational energy, and this rotational energy is transferred to a dynamo using the spur gear mechanism. Finally, the dynamo converts it into electrical energy. With the help of this prototype, we can meet the demands of electricity, reduce park's electricity bill, recharge electric vehicles, etc.</p>
+            </div>
+            <h5>AIRLINE RESERVATION SYSTEM</h5>
+            <div class="project">
+                
+                <img src="project 2.jpg" alt="Project 2">
+                <div class="project-overlay">
+                    <h3 class="project-title">AIRLINE RESERVATION SYSTEM</h3>
+                    <a href="#" class="learn-more-btn">Learn More</a>
+                </div>
+                <p>
+                    The "Airline Reservation System" portfolio project is a web application designed using HTML, CSS, and Bootstrap. Users can access the system to search for flights, view available seats, and make reservations. The interface features a user-friendly design created with HTML for structure, CSS for styling, and Bootstrap for responsiveness and layout consistency across devices. The application allows users to input their travel details, including departure and destination cities, date, and number of passengers. Upon submission, the system displays available flights along with their details and seat availability. Users can then select their preferred flight and proceed to make a reservation. The project demonstrates proficiency in front-end web development skills and showcases the ability to create a functional and visually appealing interface using fundamental web technologies.</p>
+            </div>
+            <!-- Add more projects here -->
+        </div>
+    </section>
+
+    <section id="presentations">
+        <h2>PRESENTATIONS</h2>
+        
+        <div class="content">
+            <h4>PAPER PRESENTATIONS</h4>
+            <div class="presentation">
+                <img src="paper SREC.jpg" alt="Paper 1">                
+                <img src="paper shristi.jpg" alt="Paper 2">                
+                <img src="paper kriya.jpg" alt="Paper 3">
+                
+            </div>
+            <h4>PROJECT PRESENTATIONS</h4>
+            <div class="presentation">
+                <img src="project ideathon.jpg" alt="Project 3">                
+                <img src="project NBA.jpg" alt="Project 4">                
+                <img src="project poc.jpg" alt="Project 5">
+                
+            </div>
+            <h4>CODING EVENT</h4>
+            <div class="presentation">
+                <img src="code expo.jpg" alt="code 1">                
+                <img src="coding neo codeathon.jpg" alt="code 2">                
+                <img src="coding shristi.jpg" alt="code 3">                
+                <img src="coding kriya.jpg" alt="code 4">
+            </div>
+        </div>
+    </section><section>
+    <h6><a href="KAVINNATH RESUME.pdf">CLICK HERE TO DOWNLOAD RESUME </a></h6>
+    </section>
+    <section id="contact">
+        <h2>CONTACT ME</h2>
+        <div class="content">
+            <p>Email: kavinnathar.22cse@kongu.edu</p>
+            <p>Phone: +91 6385315501</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Kavinnath . All rights reserved.</p>
+        <p>Find me on <a href="https://github.com/kavinnathar" style="color: grey;">GitHub</a> | <a href="https://www.linkedin.com/in/kavin-nath-b6a22621a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="color: grey;">LinkedIn</a></p>
+    </footer>
+<script>// Function to check if an element is in the viewport
+    function isInViewport(element) {
+            const bounding = element.getBoundingClientRect();
+            return (
+                bounding.top >= 0 &&
+                bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            );
+        }
+
+        // Function to start progress bar animation when in viewport
+        function animateProgressBars() {
+            const skillsSection = document.getElementById('skills');
+            const progressBars = document.querySelectorAll('.progress-bar');
+
+            if (isInViewport(skillsSection)) {
+                progressBars.forEach(progressBar => {
+                    const progressValue = progressBar.getAttribute('data-progress');
+                    progressBar.style.setProperty('--progress', progressValue);
+                });
+                // Remove the scroll event listener after animation starts
+                window.removeEventListener('scroll', animateProgressBars);
+            }
+        }
+
+        // Event listener to trigger animation when scrolling
+        window.addEventListener('scroll', animateProgressBars);
+
+        // Initial check when the page loads
+        animateProgressBars();
+    </script>
+    
+</body>
+</html>
